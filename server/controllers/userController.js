@@ -16,6 +16,22 @@ exports.getUser = async (req, res) => {
   }
 };
 
+/** 
+ * /api/user/all
+ * GET all users returned
+*/
+
+exports.getAllUsers = async (req, res) => {
+
+  try {
+     const users = await User.find({});
+     res.json(users);
+
+  } catch (err) {
+     res.status(400).json({message: err});
+  }
+}
+
 /**
  * /api/user/signup/{username}
  * POST create new user
